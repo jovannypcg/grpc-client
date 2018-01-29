@@ -1,10 +1,12 @@
 package mx.jovannypcg.grpcclient;
 
 import mx.jovannypcg.grpcclient.messages.Repository;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@SpringBootApplication
 public class Application {
     private static final String HOST = "localhost";
     private static final int PORT = 5000;
