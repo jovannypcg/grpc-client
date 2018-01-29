@@ -33,7 +33,7 @@ public class Client {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
 
-    public void enroll(Repository repository) {
+    public EnrollmentResponse enroll(Repository repository) {
         LOGGER.info("Attemting to enroll [" + repository.getName() + "]...");
 
         EnrollmentResponse response;
@@ -42,9 +42,10 @@ public class Client {
             response = blockingStub.enroll(repository);
         } catch (StatusRuntimeException sre) {
             LOGGER.log(Level.WARNING, "RPC failed: {0}", sre.getStatus());
-            return;
+            return null;
         }
 
         LOGGER.info("Enrollment " + (response.getAck() ? "successful!" : "failed") + "!");
+        return response;
     }
 }
