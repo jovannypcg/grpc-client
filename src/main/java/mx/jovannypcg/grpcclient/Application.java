@@ -30,6 +30,13 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws InterruptedException, InvalidProtocolBufferException {
+        while (true) {
+            enrollInternal();
+            Thread.sleep(3000);
+        }
+    }
+
+    private void enrollInternal() throws InterruptedException, InvalidProtocolBufferException {
         Client client = new Client(HOST, PORT);
 
         Map<String, Integer> languageContributions = new HashMap<>();
